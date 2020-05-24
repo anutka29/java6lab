@@ -24,11 +24,13 @@ public class MainServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String sizeString = req.getParameter("size");
+        String sizeString = req.getParameter("size"); /// comment
         String countString = req.getParameter("count");
 
+        String hello = "Hello, Ann!";
         int size;
         int count;
+
         try {
             size = Integer.parseInt(sizeString);
             count = Integer.parseInt(countString);
@@ -38,6 +40,8 @@ public class MainServlet extends HttpServlet {
             size = 10;
             count = 1;
         }
+
+
         Lorem lorem = LoremIpsum.getInstance();
         String text = lorem.getHtmlParagraphs(count, count);
         req.setAttribute("text", text);

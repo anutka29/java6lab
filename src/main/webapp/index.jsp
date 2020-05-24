@@ -4,7 +4,7 @@
     <title>Ann</title>
 </head>
 <body>
-<h3>Java laba #6:</h3>
+<h3>Hello! Java laba #6:</h3>
 <%
     String text = (String) request.getAttribute("text");
     Integer size = (Integer) request.getAttribute("size");
