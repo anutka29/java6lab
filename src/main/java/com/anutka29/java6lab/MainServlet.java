@@ -1,7 +1,5 @@
 package com.anutka29.java6lab;
 
-import com.thedeanda.lorem.Lorem;
-import com.thedeanda.lorem.LoremIpsum;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,17 +15,26 @@ public class MainServlet extends HttpServlet {
         processRequest(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
-    }
-
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String sizeString = req.getParameter("size"); /// comment
+        String sizeString = req.getParameter("size");
         String countString = req.getParameter("count");
 
-        String hello = "Hello, Ann!";
+        String[] text_start = {
+                "The world of computer programming and coding can be confusing - and often intimidating.",
+                "As school continue to incorporate STEM onto their curriculum, there are many new worlds ",
+                "and concepts that are often used, and sometimes misused. Whether you are a teacher ",
+                "looking to add to your curriculum, or a parent with a child in school, ",
+                "you will often hear terms like \"coding,\" \"programming,\" \"block-based,\" and \"text-based.\" ",
+                "They can sound pretty complicated to someone unfamiliar with the topic. Read below for some ",
+                "simple definitions to help you understand the basics.",
+                "While coding and programming are very similar and the terms are often used together, ",
+                "there are some important differences between the two. ",
+                "Coding, in its simplest form, is the process of writing instructions. ",
+                "Programming is taking those instructions and making the target act according to them. ",
+        };
+
+        StringBuilder sb = new StringBuilder();
         int size;
         int count;
 
@@ -41,12 +48,17 @@ public class MainServlet extends HttpServlet {
             count = 1;
         }
 
+        for (int i=0; i<count; i++) {
+            sb.append(text_start[i]);
+            sb.append("<br>");
+        }
 
-        Lorem lorem = LoremIpsum.getInstance();
-        String text = lorem.getHtmlParagraphs(count, count);
+        String text = sb.toString().trim();
+
         req.setAttribute("text", text);
         req.setAttribute("size", size);
         req.setAttribute("count", count);
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
+
 }

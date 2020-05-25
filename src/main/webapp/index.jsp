@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ann</title>
+    <title>Hello! Java laba #6:</title>
 </head>
 <body>
 <h3>Hello! Java laba #6:</h3>
@@ -9,6 +9,10 @@
     String text = (String) request.getAttribute("text");
     Integer size = (Integer) request.getAttribute("size");
     Integer count = (Integer) request.getAttribute("count");
+
+    if (text == null) {
+        text = "";
+    }
 %>
 <div id="form">
     <form action="${pageContext.request.contextPath}/index" method="GET" enctype="multipart/form-data">
@@ -25,7 +29,7 @@
 </div>
 
 <div class="text-content" style="font-size: <%= size%>px">
-    <%= text %>
+    <p><%= text %></p>
 </div>
 <div>
 
