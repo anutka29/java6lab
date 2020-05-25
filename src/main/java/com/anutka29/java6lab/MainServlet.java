@@ -19,6 +19,7 @@ public class MainServlet extends HttpServlet {
 
         String sizeString = req.getParameter("size");
         String countString = req.getParameter("count");
+        String colorString = req.getParameter("color");
 
         String[] text_start = {
                 "The world of computer programming and coding can be confusing - and often intimidating.",
@@ -58,6 +59,7 @@ public class MainServlet extends HttpServlet {
         req.setAttribute("text", text);
         req.setAttribute("size", size);
         req.setAttribute("count", count);
+        req.setAttribute("color", colorString);
         getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
